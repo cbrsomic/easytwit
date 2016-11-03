@@ -33,13 +33,13 @@ public class User implements Serializable {
 
     private String email;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany
     @JoinTable(name="subscriptions",
             joinColumns = {@JoinColumn(name = "userId")},
             inverseJoinColumns = {@JoinColumn(name = "subscriptionId")})
     private Set<User> followers = new HashSet<>();
 
-    @ManyToMany(mappedBy = "followers", fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "followers")
     private Set<User> following = new HashSet<>();
 
 }
