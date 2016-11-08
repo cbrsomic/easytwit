@@ -23,3 +23,7 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+
+### WEB ###
+node_modules
+bower_components
