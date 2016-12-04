@@ -42,5 +42,6 @@ dependencies {
 	compile('mysql:mysql-connector-java:5.1.34')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile("org.springframework.boot:spring-boot-starter-data-rest")
+	compile('org.springframework.data:spring-data-rest-hal-browser')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
