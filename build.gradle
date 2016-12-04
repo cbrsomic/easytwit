@@ -41,5 +41,6 @@ dependencies {
 	compile('org.projectlombok:lombok')
 	compile('mysql:mysql-connector-java:5.1.34')
 	compile('org.springframework.boot:spring-boot-starter-web')
+	compile("org.springframework.boot:spring-boot-starter-data-rest")
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
