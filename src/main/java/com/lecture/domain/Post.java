@@ -5,6 +5,7 @@ import java.time.ZonedDateTime;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -34,7 +35,7 @@ public class Post implements Serializable {
 
     private ZonedDateTime date = ZonedDateTime.now();
 
-    @ManyToMany(mappedBy = "posts", fetch = FetchType.EAGER)
+    @ManyToMany(mappedBy = "posts", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Hashtag> hashtags = new HashSet<>();
 
     @ManyToMany(fetch = FetchType.EAGER)
