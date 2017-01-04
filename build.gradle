@@ -16,6 +16,8 @@ buildscript {
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'spring-boot'
+apply plugin: 'war'
+apply plugin: 'maven'
 apply plugin: 'idea'
 apply plugin: 'com.moowork.node'
 
@@ -30,13 +32,18 @@ jar {
 	baseName = 'easy-twit'
 	version = '0.0.1-SNAPSHOT'
 }
+
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 repositories {
 	mavenCentral()
+  mavenLocal()
 }
 
+configurations {
+	warOverlays
+}
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
@@ -47,7 +54,31 @@ dependencies {
 	compile('mysql:mysql-connector-java:5.1.34')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+
+  warOverlays('org.pat.easytwit:easytwit-overlay:1.0-SNAPSHOT')
 }
+
+task processOverlays(type: Copy) {
+  configurations.warOverlays.each { overlay ->
+      from zipTree(overlay)
+      into "build/overlays"
+      include '**/*'
+      exclude '**/*css*/**'
+  }
+}
+
+war {
+  dependsOn processOverlays
+
+  from 'build/overlays'
+  into '/'
+}
+
+task cleanTempDir(type: Delete) {
+  delete "build/overlays"
+}
+
+war.finalizedBy cleanTempDir
 
 task runNpmBuild(type: NpmTask) {
   args = ['run', 'build']
