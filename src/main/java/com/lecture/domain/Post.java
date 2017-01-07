@@ -5,6 +5,7 @@ import java.time.ZonedDateTime;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -34,7 +35,7 @@ public class Post implements Serializable {
 
     private ZonedDateTime date = ZonedDateTime.now();
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "hashtag_post",
         joinColumns = {@JoinColumn(name = "postId")},
         inverseJoinColumns = {@JoinColumn(name = "hashtagId")})
