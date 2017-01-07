@@ -1,10 +1,8 @@
 package com.lecture.repository;
 
-import org.springframework.data.repository.PagingAndSortingRepository;
 import com.lecture.domain.Post;
+import org.springframework.data.repository.CrudRepository;
 
-public interface PostRepository extends PagingAndSortingRepository<Post, Long> {
-
-
-
+public interface PostRepository extends CrudRepository<Post, Long>
+{
 }

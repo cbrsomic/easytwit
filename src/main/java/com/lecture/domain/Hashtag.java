@@ -12,9 +12,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Entity
 @Data
+@EqualsAndHashCode(exclude = "posts")
 public class Hashtag implements Serializable {
 
     @Id
@@ -23,10 +25,7 @@ public class Hashtag implements Serializable {
 
     private String text;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "hashtag_post",
-            joinColumns = {@JoinColumn(name = "hashtagId")},
-            inverseJoinColumns = {@JoinColumn(name = "postId")})
+    @ManyToMany(mappedBy = "hashtags")
     private Set<Post> posts = new HashSet<>();
 
 }

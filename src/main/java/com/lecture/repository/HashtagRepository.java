@@ -1,10 +1,8 @@
 package com.lecture.repository;
 
-import org.springframework.data.repository.PagingAndSortingRepository;
 import com.lecture.domain.Hashtag;
+import org.springframework.data.repository.CrudRepository;
 
-public interface HashtagRepository extends PagingAndSortingRepository<Hashtag, Long> {
-
-
-
+public interface HashtagRepository extends CrudRepository<Hashtag, Long>
+{
 }

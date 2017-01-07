@@ -1,10 +1,8 @@
 package com.lecture.repository;
 
-import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.repository.CrudRepository;
 import com.lecture.domain.Comment;
 
-public interface CommentRepository extends PagingAndSortingRepository<Comment, Long> {
-
-
-
+public interface CommentRepository extends CrudRepository<Comment, Long>
+{
 }

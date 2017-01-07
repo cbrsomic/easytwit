@@ -34,14 +34,11 @@ public class Post implements Serializable {
 
     private ZonedDateTime date = ZonedDateTime.now();
 
-    @ManyToMany(mappedBy = "posts", fetch = FetchType.EAGER)
+    @ManyToMany
+    @JoinTable(name = "hashtag_post",
+        joinColumns = {@JoinColumn(name = "postId")},
+        inverseJoinColumns = {@JoinColumn(name = "hashtagId")})
     private Set<Hashtag> hashtags = new HashSet<>();
-
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "likes",
-            joinColumns = {@JoinColumn(name = "postId")},
-            inverseJoinColumns = {@JoinColumn(name = "userId")})
-    private Set<User> likes = new HashSet<>();
 
     @ManyToOne
     private User user;
