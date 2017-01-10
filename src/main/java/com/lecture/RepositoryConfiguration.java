@@ -13,11 +13,6 @@ import org.springframework.data.rest.webmvc.config.RepositoryRestConfigurerAdapt
 @Configuration
 public class RepositoryConfiguration
 {
-  @Bean
-  PostEventHandler postEventHandler()
-  {
-    return new PostEventHandler();
-  }
 
   @Bean
   public RepositoryRestConfigurer repositoryRestConfigurer()

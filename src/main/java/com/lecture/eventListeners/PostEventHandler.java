@@ -5,7 +5,9 @@ import com.lecture.domain.Hashtag;
 import com.lecture.domain.Post;
 import org.springframework.data.rest.core.annotation.HandleBeforeCreate;
 import org.springframework.data.rest.core.annotation.RepositoryEventHandler;
+import org.springframework.stereotype.Component;
 
+@Component
 @RepositoryEventHandler(Post.class)
 public class PostEventHandler
 {
