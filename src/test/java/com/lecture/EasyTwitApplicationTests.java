@@ -11,6 +11,7 @@ public class EasyTwitApplicationTests {
 
 	@Test
 	public void contextLoads() {
+	  //test
 	}
 
 }
